@@ -32,6 +32,7 @@ TEMPLATE_DEBUG = True
 # Application definition
 
 INSTALLED_APPS = (
+    'grappelli',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -120,3 +121,6 @@ STATICFILES_DIRS = (
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.core.context_processors.request",
+)
