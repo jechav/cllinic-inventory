@@ -52,7 +52,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.security.SecurityMiddleware',
 )
 
-ROOT_URLCONF = 'invetoryapp.urls'
+ROOT_URLCONF = 'inventoryapp.urls'
 
 TEMPLATES = [
     {
@@ -70,7 +70,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'invetoryapp.wsgi.application'
+WSGI_APPLICATION = 'inventoryapp.wsgi.application'
 
 
 # Database
