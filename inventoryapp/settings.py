@@ -124,3 +124,5 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.request",
 )
+
+GRAPPELLI_ADMIN_TITLE = "Inventory"

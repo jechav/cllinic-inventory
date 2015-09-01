@@ -8,10 +8,10 @@ class productAdmin(admin.ModelAdmin):
             'property', 
     )
 
-    #list_filter = ('load',)
+    list_filter = ('property', 'state',)
 
     search_fields = (
-            #'tag','activation_date', 'expriry_date',
+            'name','series', 'model',
     )
 # Register your models here.
 admin.site.register(Product, productAdmin)
