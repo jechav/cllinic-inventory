@@ -5,10 +5,11 @@ from .models import Product, Location, Brand, Manufacture, Accessory
 class productAdmin(admin.ModelAdmin):
     list_display = (
             'name', 'model', 'series', 'voltage',
-            'property', 
+            'frequency', 'property', 'state', 
+            'type', 'location', 'brand', 'manufacture', 
     )
 
-    list_filter = ('property', 'state',)
+    list_filter = ('property', 'state', 'type',)
 
     search_fields = (
             'name','series', 'model',

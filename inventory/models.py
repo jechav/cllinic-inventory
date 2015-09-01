@@ -6,7 +6,7 @@ class TimeStampedModel(models.Model):
     Una clase abstracta que registra la fecha de creacion y
     modificacion del modelo
     """
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, verbose_name="Nombre")
     created = models.DateTimeField(auto_now_add=True, verbose_name="fecha de creacion")
     modified = models.DateTimeField(auto_now=True, verbose_name="fecha de modificacion")
 
@@ -17,8 +17,8 @@ class TimeStampedModel(models.Model):
         abstract = True
 
 class Accessory(TimeStampedModel):
-  model = models.CharField(max_length=255)
-  feature = models.CharField(max_length=255)
+  model = models.CharField(max_length=255, verbose_name="Modelo")
+  feature = models.CharField(max_length=255, verbose_name="Caracteristicas")
 
 class Location(TimeStampedModel):
   pass
@@ -30,36 +30,36 @@ class Manufacture(TimeStampedModel):
   pass
 
 class Product(TimeStampedModel):
-    model = models.CharField(max_length=255)
-    series = models.CharField(max_length=255)
-    voltage = models.IntegerField()
+    model = models.CharField(max_length=255, verbose_name="Modelo")
+    series = models.CharField(max_length=255, verbose_name="Serie")
+    voltage = models.IntegerField(verbose_name="Voltaje")
     VOLTAGE_TYPE = (
         ('ac', 'AC'),
         ('dc', 'DC'),
     )
-    voltage_type = models.CharField(max_length=2, choices=VOLTAGE_TYPE, default=VOLTAGE_TYPE[0][0])
+    voltage_type = models.CharField(max_length=2, choices=VOLTAGE_TYPE, default=VOLTAGE_TYPE[0][0], verbose_name="Tipo de Voltaje")
     FREQUENCY = (
         ('60', '60hz'),
         ('50', '50hz'),
     )
-    frequency = models.CharField(max_length=2, null=True, choices=FREQUENCY, default=FREQUENCY[0][0])
+    frequency = models.CharField(max_length=2, null=True, choices=FREQUENCY, default=FREQUENCY[0][0], verbose_name="Frecuencia")
     PROPERTY = (
         ('ho', 'HOSPITAL'),
         ('pr', 'PRESTADO'),
         ('co', 'COMODATO'),
         ('me', 'MEDICO'),
     )
-    property = models.CharField(max_length=2, choices=PROPERTY, default=PROPERTY[0][0])
+    property = models.CharField(max_length=2, choices=PROPERTY, default=PROPERTY[0][0], verbose_name="Propietario")
     STATE = (
         ('on', 'OPERATIVO'),
         ('of', 'DANADO'),
     )
-    state = models.CharField(max_length=2, choices=STATE, default=STATE[0][0])
+    state = models.CharField(max_length=2, choices=STATE, default=STATE[0][0], verbose_name="Estado")
     TYPE = (
         ('fx', 'FIJO'),
         ('mv', 'MOVIL'),
     )
-    type = models.CharField(max_length=2, choices=TYPE, default=TYPE[0][0])
+    type = models.CharField(max_length=2, choices=TYPE, default=TYPE[0][0], verbose_name="Tipo")
 
     """
     RELATIONSHIPS
