@@ -11,23 +11,32 @@ class TimeStampedModel(models.Model):
     modified = models.DateTimeField(auto_now=True, verbose_name="fecha de modificacion")
 
     def __unicode__(self):
-        return self.name
+      return self.name
 
     class Meta:
-        abstract = True
+      abstract = True
 
 class Accessory(TimeStampedModel):
-  model = models.CharField(max_length=255, verbose_name="Modelo")
-  feature = models.CharField(max_length=255, verbose_name="Caracteristicas")
+    model = models.CharField(max_length=255, verbose_name="Modelo")
+    feature = models.CharField(max_length=255, verbose_name="Caracteristicas")
+    class Meta:
+      verbose_name_plural = "Accesorios"
+      verbose_name = "Accesorio"
 
 class Location(TimeStampedModel):
-  pass
+    class Meta:
+      verbose_name_plural = "Localizaciones"
+      verbose_name = "Localizacion"
 
 class Brand(TimeStampedModel):
-  pass
+    class Meta:
+      verbose_name_plural = "Marcas"
+      verbose_name = "Marca"
 
 class Manufacture(TimeStampedModel):
-  pass
+    class Meta:
+      verbose_name_plural = "Frabricantes"
+      verbose_name = "Fabricante"
 
 class Product(TimeStampedModel):
     model = models.CharField(max_length=255, verbose_name="Modelo")
@@ -36,29 +45,29 @@ class Product(TimeStampedModel):
     VOLTAGE_TYPE = (
         ('ac', 'AC'),
         ('dc', 'DC'),
-    )
+        )
     voltage_type = models.CharField(max_length=2, choices=VOLTAGE_TYPE, default=VOLTAGE_TYPE[0][0], verbose_name="Tipo de Voltaje")
     FREQUENCY = (
         ('60', '60hz'),
         ('50', '50hz'),
-    )
+        )
     frequency = models.CharField(max_length=2, null=True, choices=FREQUENCY, default=FREQUENCY[0][0], verbose_name="Frecuencia")
     PROPERTY = (
         ('ho', 'HOSPITAL'),
         ('pr', 'PRESTADO'),
         ('co', 'COMODATO'),
         ('me', 'MEDICO'),
-    )
+        )
     property = models.CharField(max_length=2, choices=PROPERTY, default=PROPERTY[0][0], verbose_name="Propietario")
     STATE = (
         ('on', 'OPERATIVO'),
         ('of', 'DANADO'),
-    )
+        )
     state = models.CharField(max_length=2, choices=STATE, default=STATE[0][0], verbose_name="Estado")
     TYPE = (
         ('fx', 'FIJO'),
         ('mv', 'MOVIL'),
-    )
+        )
     type = models.CharField(max_length=2, choices=TYPE, default=TYPE[0][0], verbose_name="Tipo")
 
     """
@@ -68,3 +77,6 @@ class Product(TimeStampedModel):
     brand = models.ForeignKey(Brand)
     manufacture = models.ForeignKey(Manufacture)
     accessories = models.ManyToManyField(Accessory)
+    class Meta:
+      verbose_name_plural = "Productos"
+      verbose_name = "Producto"
