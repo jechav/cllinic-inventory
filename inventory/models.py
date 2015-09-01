@@ -76,7 +76,7 @@ class Product(TimeStampedModel):
     location = models.ForeignKey(Location, verbose_name="Localizacion")
     brand = models.ForeignKey(Brand, verbose_name="Marca")
     manufacture = models.ForeignKey(Manufacture, verbose_name="Fabricante")
-    accessories = models.ManyToManyField(Accessory, verbose_name="Accesorios")
+    accessories = models.ManyToManyField(Accessory, verbose_name="Accesorios", null=True)
     class Meta:
       verbose_name_plural = "Productos"
       verbose_name = "Producto"
