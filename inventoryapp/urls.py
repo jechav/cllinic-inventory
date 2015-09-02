@@ -14,5 +14,6 @@ urlpatterns = patterns('',
     #url(r'^db', hello.views.db, name='db'),
     url(r'^grappelli/', include('grappelli.urls')), # grappelli URLS
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin_export/', include("admin_export.urls", namespace="admin_export")),
 
 )

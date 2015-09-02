@@ -25,6 +25,12 @@ class Accessory(TimeStampedModel):
 
 class Location(TimeStampedModel):
     class Meta:
+      verbose_name_plural = "Servicio"
+      verbose_name = "Servicio"
+
+class Sublocation(TimeStampedModel):
+    service = models.ForeignKey(Location, verbose_name="Servicio"); 
+    class Meta:
       verbose_name_plural = "Localizaciones"
       verbose_name = "Localizacion"
 
@@ -73,10 +79,10 @@ class Product(TimeStampedModel):
     """
     RELATIONSHIPS
     """
-    location = models.ForeignKey(Location, verbose_name="Localizacion")
+    location = models.ForeignKey(Sublocation, verbose_name="Localizacion")
     brand = models.ForeignKey(Brand, verbose_name="Marca")
     manufacture = models.ForeignKey(Manufacture, verbose_name="Fabricante")
-    accessories = models.ManyToManyField(Accessory, verbose_name="Accesorios", null=True)
+    accessories = models.ManyToManyField(Accessory, verbose_name="Accesorios", blank=True)
     class Meta:
-      verbose_name_plural = "Productos"
-      verbose_name = "Producto"
+      verbose_name_plural = "Equipos"
+      verbose_name = "Equipo"
